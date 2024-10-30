@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: sample-article.html 
+keywords:  
+summary:  
+---
+= Der Seitentitel wird hier angezeigt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Verwenden Sie diese Vorlage für Artikel, Themen, wie auch immer Sie sie nennen. Die Datei Index.adoc hat nicht die richtigen Schlüsselwörter für eine Artikelseite und die Verwendung als Vorlage kann später zu Problemen bei der Veröffentlichung führen.
+
+
+NOTE: Löschen Sie diese Datei vor der ersten Veröffentlichung, da die Datei veröffentlicht wird, auch wenn sie nicht mit der Sidebar verknüpft ist. Nachdem Sie ein paar Artikel erstellt haben, können Sie sie stattdessen als Starter verwenden.
+
+Wenn sich Ihre Artikel in einem Unterordner befinden, müssen Sie zwei Anpassungen an der oben gezeigten Notation vornehmen:
+
+* `:imagesdir:../media/`
+* `permalink: folder-name/sample-article.html`
+

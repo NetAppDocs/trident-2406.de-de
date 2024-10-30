@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: trident-managing-k8s/upgrade-tridentctl.html 
+keywords: upgrade, trident, methods, operator, tridentctl, helm 
+summary: 'Sie können eine vorhandene Astra Trident-Installation ganz einfach mit aktualisieren `tridentctl`.' 
+---
+= Upgrade mit tridentctl
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine bestehende Astra Trident Installation ganz einfach mit aktualisieren `tridentctl`.
+
+.Über diese Aufgabe
+Deinstallation und Neuinstallation von Astra Trident fungiert als Upgrade. Bei der Deinstallation von Trident werden die von der Astra Trident Implementierung verwendeten Persistent Volume Claim (PVC) und Persistent Volume (PV) nicht gelöscht. PVS, die bereits bereitgestellt wurden, bleiben verfügbar, während Astra Trident offline ist. Astra Trident stellt Volumes für alle PVCs bereit, die in der Zwischenzeit erstellt werden, sobald sie wieder online sind.
+
+.Bevor Sie beginnen
+Überprüfen Sie link:upgrade-trident.html#select-an-upgrade-method["Wählen Sie eine Aktualisierungsmethode aus"] vor dem Upgrade mit `tridentctl`.
+
+.Schritte
+. Führen Sie den Deinstallationsbefehl in `tridentctl` aus, um alle mit Astra Trident verbundenen Ressourcen mit Ausnahme der CRDs und zugehörigen Objekte zu entfernen.
++
+[listing]
+----
+./tridentctl uninstall -n <namespace>
+----
+. Installieren Sie Astra Trident Neu. Siehe link:../trident-get-started/kubernetes-deploy-tridentctl.html["Installieren Sie Astra Trident mit tridentctl"].
+
+
+
+IMPORTANT: Unterbrechen Sie den Upgrade-Prozess nicht. Stellen Sie sicher, dass das Installationsprogramm bis zum Abschluss ausgeführt wird.

@@ -1,0 +1,219 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy.html 
+keywords: deploy, astra trident, methods, operator, tridentctl, helm, tanzu, vmware 
+summary: 'Sie können Astra Trident mit dem Trident Operator (manuell oder mit Helm) oder mit installieren `tridentctl`. In diesem Thema finden Sie wichtige Informationen zur Auswahl des richtigen Installationsprozesses.' 
+---
+= Erfahren Sie mehr über die Installation von Astra Trident
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Damit Astra Trident in einer Vielzahl von Umgebungen und Organisationen installiert werden kann, bietet NetApp diverse Installationsoptionen an. Sie können Astra Trident mit dem Trident Operator (manuell oder mit Helm) oder mit installieren `tridentctl`. In diesem Thema finden Sie wichtige Informationen zur Auswahl des richtigen Installationsprozesses.
+
+
+
+== Kritische Informationen zu Astra Trident 24.06
+
+*Sie müssen die folgenden wichtigen Informationen über Astra Trident lesen.*
+
+.<strong> Informationen über Astra TripereIT </strong>
+[%collapsible%open]
+====
+* Kubernetes 1.31 wird jetzt in Astra Trident unterstützt. Upgrade von Trident vor dem Upgrade von Kubernetes.
+* Astra Trident setzt die Verwendung der Multipathing-Konfiguration in SAN-Umgebungen strikt durch, wobei der empfohlene Wert `find_multipaths: no` in der Multipath.conf Datei verwendet wird.
++
+Die Verwendung einer nicht-Multipathing-Konfiguration oder die Verwendung von `find_multipaths: yes` oder `find_multipaths: smart` Wert in der Datei Multipath.conf führt zu Mount-Fehlern. Trident empfiehlt die Verwendung von `find_multipaths: no` seit Version 21.07.
+
+
+
+====
+
+
+== Bevor Sie beginnen
+
+Unabhängig von Ihrem Installationspfad müssen Sie Folgendes haben:
+
+* Vollständige Berechtigungen für einen unterstützten Kubernetes-Cluster, auf dem eine unterstützte Version von Kubernetes und aktivierte Funktionsanforderungen ausgeführt werden. Weitere Informationen finden Sie imlink:requirements.html["Anforderungen"].
+* Zugriff auf ein unterstütztes NetApp Storage-System.
+* Kann Volumes von allen Kubernetes Worker-Nodes aus mounten
+* Ein Linux-Host mit `kubectl` (oder `oc`, falls Sie OpenShift verwenden) installiert und für das Management des Kubernetes-Clusters konfiguriert, den Sie verwenden möchten.
+* Die `KUBECONFIG` Umgebungsvariable legt fest, dass sie auf Ihre Kubernetes Cluster-Konfiguration verweisen soll.
+* Wenn Sie Kubernetes mit Docker Enterprise verwenden, https://docs.docker.com/ee/ucp/user-access/cli/["Führen Sie die entsprechenden Schritte aus, um den CLI-Zugriff zu aktivieren"^]
+
+
+
+TIP: Wenn Sie sich nicht mit dem vertraut gemacht habenlink:../trident-concepts/intro.html["Grundkonzepte"^], ist jetzt eine tolle Zeit, das zu tun.
+
+
+
+== Wählen Sie Ihre Installationsmethode
+
+Wählen Sie die für Sie richtige Installationsmethode aus. Sie sollten auch die Überlegungen für durchgehenlink:kubernetes-deploy.html#move-between-installation-methods["Bewegen zwischen Methoden"], bevor Sie Ihre Entscheidung treffen.
+
+
+
+=== Verwenden des Betreibers von Trident
+
+Ob manuell oder mit Hilfe von Helm – der Trident Operator ist ein hervorragender Weg, die Installation zu vereinfachen und Astra Trident Ressourcen dynamisch zu managen. Sie können sogar link:../trident-get-started/kubernetes-customize-deploy.html["Individuelle Anpassung der Trident Implementierung"]die Attribute in der benutzerdefinierten Ressource (CR) verwenden `TridentOrchestrator`.
+
+Die Vorteile der Verwendung des Trident-Mitarbeiters:
+
+.<strong> </strong> für Objekte aus Trident
+[%collapsible]
+====
+Der Trident Operator erstellt automatisch die folgenden Objekte für Ihre Kubernetes-Version.
+
+* Servicekonto für den Betreiber
+* ClusterRole und ClusterRoleBinding an das ServiceAccount
+* Dedizierte PodSecurityPolicy (für Kubernetes 1.25 und früher)
+* Der Bediener selbst
+
+
+====
+.<strong>-</strong>
+[%collapsible]
+====
+Der Cluster-scoped Trident Operator verwaltet Ressourcen, die mit einer Astra Trident Installation auf Cluster-Ebene verbunden sind. Dies reduziert Fehler, die bei der Verwaltung von Clusterressourcen mit einem Namespace-Scoped-Operator auftreten können. Dies ist wichtig für die Selbstheilung und das Patching.
+
+====
+.<strong> Verheilen cappecackeIT </strong>
+[%collapsible]
+====
+Der Bediener überwacht die Installation von Astra Trident und ergreift aktiv Maßnahmen, um Probleme wie das Löschen der Implementierung oder das versehentliche Ändern der Implementierung zu beheben. Es wird ein `trident-operator-<generated-id>` Pod erstellt, der ein CR mit einer Astra Trident-Installation verknüpft `TridentOrchestrator`. Dadurch wird sichergestellt, dass nur eine Instanz von Astra Trident im Cluster vorhanden ist und das Setup kontrolliert, um sicherzustellen, dass die Installation idempotent ist. Wenn Änderungen an der Installation vorgenommen werden (z. B. Löschen der Bereitstellung oder Knotendemonsatz), identifiziert der Bediener diese und korrigiert sie einzeln.
+
+====
+.<strong> Vermittlhat Updates für vorhandene InstalleIT </strong>
+[%collapsible]
+====
+Sie können eine vorhandene Implementierung einfach mit dem Bediener aktualisieren. Sie müssen nur den CR bearbeiten `TridentOrchestrator`, um Aktualisierungen an einer Installation durchzuführen.
+
+Betrachten Sie zum Beispiel ein Szenario, bei dem Sie Astra Trident aktivieren müssen, um Debug-Protokolle zu generieren. Um dies zu `spec.debug` tun, patchen Sie Ihre `TridentOrchestrator` auf `true`:
+
+[listing]
+----
+kubectl patch torc <trident-orchestrator-name> -n trident --type=merge -p '{"spec":{"debug":true}}'
+----
+Nach der `TridentOrchestrator` Aktualisierung verarbeitet der Bediener die Updates und Patches für die bestehende Installation. Dies kann dazu führen, dass neue Pods erstellt werden, um die Installation entsprechend zu ändern.
+
+====
+.<strong> Retinstallbeam </strong>
+[%collapsible]
+====
+Der im Cluster enthaltene Trident Operator ermöglicht die saubere Entfernung von im Cluster-Umfang enthaltenen Ressourcen. Benutzer können Astra Trident vollständig deinstallieren und einfach neu installieren.
+
+====
+.<strong> </strong> für Kubernetes Upgrade
+[%collapsible]
+====
+Wenn die Kubernetes-Version des Clusters auf eine unterstützte Version aktualisiert wird, aktualisiert der Operator automatisch eine bestehende Astra Trident-Installation und ändert sie, um sicherzustellen, dass sie die Anforderungen der Kubernetes-Version erfüllt.
+
+
+NOTE: Wenn das Cluster auf eine nicht unterstützte Version aktualisiert wird, verhindert der Operator die Installation von Astra Trident. Falls Astra Trident bereits mit dem Operator installiert wurde, wird eine Warnmeldung angezeigt, die angibt, dass Astra Trident auf einer nicht unterstützten Kubernetes-Version installiert ist.
+
+====
+
+
+=== Verwenden `tridentctl`
+
+Wenn Sie eine vorhandene Bereitstellung haben, die aktualisiert werden muss, oder wenn Sie Ihre Bereitstellung stark anpassen möchten, sollten Sie dies in Betracht ziehen. Dies ist die herkömmliche Methode der Implementierung von Astra Trident.
+
+Die Manifeste für Trident-Ressourcen werden generiert. Dies umfasst die Implementierung, das Demonet, das Servicekonto und die Cluster-Rolle, die Astra Trident im Rahmen der Installation erstellt.
+
+
+NOTE: Ab Version 22.04 werden die AES-Schlüssel nicht mehr bei jeder Installation von Astra Trident neu generiert. Mit dieser Version installiert Astra Trident ein neues geheimes Objekt, das bei den Installationen fortbesteht. Dies bedeutet, `tridentctl` dass in 22.04 frühere Versionen von Trident deinstalliert werden können, aber frühere Versionen können 22.04-Installationen nicht deinstallieren. Wählen Sie die entsprechende Installation_method_ aus.
+
+
+
+== Wählen Sie den Installationsmodus aus
+
+Bestimmen Sie Ihren Bereitstellungsprozess auf der Grundlage des von Ihrem Unternehmen benötigten _Installations-Modus_ (Standard, Offline oder Remote).
+
+[role="tabbed-block"]
+====
+.Standardinstallation
+--
+Dies ist der einfachste Weg, Astra Trident zu installieren und funktioniert für die meisten Umgebungen, die keine Netzwerkeinschränkungen auferlegen. Standard-Installationsmodus verwendet Standardregistrierungen, um erforderliche Trident (`docker.io`) und CSI (`registry.k8s.io`) Bilder zu speichern.
+
+Wenn Sie den Standardmodus verwenden, können Sie das Astra Trident-Installationsprogramm:
+
+* Ruft die Container-Images über das Internet ab
+* Erstellt eine Implementierung oder Node-Demonset, bei dem Astra Trident Pods auf allen teilnahmeberechtigten Nodes im Kubernetes Cluster gespinnt werden
+
+
+--
+.Offline-Installation
+--
+Der Offline-Installationsmodus kann an einem luftgekapselten oder sicheren Ort erforderlich sein. In diesem Szenario können Sie eine einzelne private, gespiegelte Registry oder zwei gespiegelte Registryrien erstellen, um die erforderlichen Trident- und CSI-Images zu speichern.
+
+
+NOTE: Unabhängig von Ihrer Registrierungskonfiguration müssen CSI-Bilder in einer Registrierung enthalten sein.
+
+--
+.Remote-Installation
+--
+Hier finden Sie einen allgemeinen Überblick über den Remote-Installationsprozess:
+
+* Stellen Sie die entsprechende Version von `kubectl` auf der Remote-Maschine bereit, von der aus Sie Astra Trident bereitstellen möchten.
+* Kopieren Sie die Konfigurationsdateien aus dem Kubernetes-Cluster und legen Sie die Umgebungsvariable auf der Remote-Maschine fest `KUBECONFIG`.
+* Starten Sie einen `kubectl get nodes` Befehl, um zu überprüfen, ob Sie eine Verbindung zu dem erforderlichen Kubernetes-Cluster herstellen können.
+* Führen Sie die Implementierung von der Remote-Maschine aus, indem Sie die standardmäßigen Installationsschritte verwenden.
+
+
+--
+====
+
+
+== Wählen Sie den Prozess basierend auf Methode und Modus aus
+
+Nachdem Sie Ihre Entscheidungen getroffen haben, wählen Sie den entsprechenden Prozess aus.
+
+[cols="2"]
+|===
+| Methode | Installationsmodus 
+
+
+| Trident-Operator (manuell)  a| 
+link:kubernetes-deploy-operator.html["Standardinstallation"]
+
+link:kubernetes-deploy-operator-mirror.html["Offline-Installation"]
+
+
+
+| Betreiber von Trident (Helm)  a| 
+link:kubernetes-deploy-helm.html["Standardinstallation"]
+
+link:kubernetes-deploy-helm-mirror.html["Offline-Installation"]
+
+
+
+| `tridentctl`  a| 
+link:kubernetes-deploy-tridentctl.html["Standard- oder Offline-Installation"]
+
+|===
+
+
+== Wechseln zwischen den Installationsmethoden
+
+Sie können sich entscheiden, Ihre Installationsmethode zu ändern. Bevor Sie dies tun, sollten Sie folgendes bedenken:
+
+* Verwenden Sie immer die gleiche Methode für die Installation und Deinstallation von Astra Trident. Wenn Sie mit bereitgestellt haben `tridentctl`, sollten Sie die entsprechende Version der Binärdatei verwenden `tridentctl`, um Astra Trident zu deinstallieren. Ebenso sollten Sie, wenn Sie mit dem Operator bereitstellen, den CR bearbeiten `TridentOrchestrator` und `spec.uninstall=true` Astra Trident deinstallieren.
+* Wenn Sie eine betreiberbasierte Bereitstellung haben, die Sie entfernen und stattdessen zur Bereitstellung von Astra Trident verwenden möchten `tridentctl`, sollten Sie zunächst Astra Trident bearbeiten `TridentOrchestrator` und auf „deinstallieren“ setzen `spec.uninstall=true`. Dann löschen `TridentOrchestrator` und die Bedienerbereitstellung. Sie können dann installieren mit `tridentctl`.
+* Wenn Sie über eine manuelle, bedienerbasierte Implementierung verfügen und die Helm-basierte Trident Operator-Implementierung verwenden möchten, sollten Sie zuerst den Operator manuell deinstallieren und dann die Helm-Installation durchführen. So kann Helm den Trident-Operator mit den erforderlichen Beschriftungen und Anmerkungen implementieren. Wenn dies nicht der Fall ist, schlägt die Bereitstellung des Helm-basierten Trident-Operators mit einem Fehler bei der Labelvalidierung und einem Validierungsfehler bei der Annotation fehl. Wenn Sie eine-basierte Bereitstellung haben `tridentctl`, können Sie Helm-basierte Bereitstellung verwenden, ohne dass Probleme auftreten.
+
+
+
+
+== Andere bekannte Konfigurationsoptionen
+
+Bei der Installation von Astra Trident auf VMware Tanzu Portfolio Produkten:
+
+* Das Cluster muss privilegierte Workloads unterstützen.
+* Das `--kubelet-dir` Flag sollte auf den Speicherort des Verzeichnisses kubelet gesetzt werden. Standardmäßig ist dies `/var/vcap/data/kubelet` .
++
+Die Angabe des Kubelet-Standorts unter Verwendung `--kubelet-dir` ist für Trident Operator, Helm und Bereitstellungen bekannt `tridentctl`.
+
+
