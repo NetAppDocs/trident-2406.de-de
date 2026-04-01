@@ -15,7 +15,7 @@ summary: Sie sollten die gleiche Methode verwenden, um Astra Trident zu deinstal
 Sie sollten die gleiche Methode verwenden, um Astra Trident zu deinstallieren, die Sie zur Installation von Astra Trident verwendet haben.
 
 .Über diese Aufgabe
-* Wenn Sie nach einem Upgrade, Abhängigkeitsproblemen oder einem nicht erfolgreichen oder unvollständigen Upgrade eine Korrektur für Fehler benötigen, sollten Sie Astra Trident deinstallieren und die frühere Version mithilfe der entsprechenden Anweisungen neu installierenlink:../earlier-versions.html["Version"]. Dies ist die einzige empfohlene Möglichkeit, _Downgrade_ auf eine frühere Version zu übertragen.
+* Falls nach einem Upgrade Fehler, Abhängigkeitsprobleme oder ein fehlgeschlagenes bzw. unvollständiges Upgrade auftreten, sollten Sie Astra Trident deinstallieren und die vorherige Version gemäß der entsprechenden Anleitung für diese Version neu installieren. Dies ist die einzige empfohlene Methode, um auf eine frühere Version _downzugraden_.
 * Für eine einfache Aktualisierung und Neuinstallation entfernt das Deinstallieren von Astra Trident nicht die CRDs oder damit verbundene Objekte, die von Astra Trident erstellt wurden. Wenn Sie Astra Trident und alle seine Daten vollständig entfernen müssen, lesen Sie link:../troubleshooting.html#completely-remove-astra-trident-and-crds["Entfernen Sie Astra Trident und CRDs vollständig"].
 
 
