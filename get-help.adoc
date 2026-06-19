@@ -84,8 +84,7 @@ Um Hilfe mit Astra Trident zu erhalten, erstellen Sie ein Support Bundle mit `tr
 
 == Finden Sie weitere Informationen
 
-* link:https://cloud.netapp.com/blog/topic/astra["Astra-Blogs"^]
 * link:https://netapp.io/persistent-storage-provisioner-for-kubernetes/["Astra Trident Blogs"^]
-* link:https://cloud.netapp.com/kubernetes-hub["Kubernetes Hub"^]
+* link:https://www.netapp.com/console/["Kubernetes Hub"^]
 * link:https://netapp.io/["NetApp.io"^]
 

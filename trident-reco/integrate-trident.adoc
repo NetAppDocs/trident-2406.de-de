@@ -108,7 +108,7 @@ Fußnote: Yesfootnote:1[]: Nicht verwaltet durch Astra Trident Jafootnote:2[]: W
 
 === Back-End-Treiber für Azure NetApp Files
 
-Astra Trident verwendet den `azure-netapp-files` Treiber für das Management des link:https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Dateien"^] Service.
+Astra Trident verwendet den  `azure-netapp-files` Treiber zur Verwaltung des link:https://azure.microsoft.com/en-us/products/netapp/["Azure NetApp Dateien"^] Service.
 
 Weitere Informationen zu diesem Treiber und zur Konfiguration finden Sie unter link:https://docs.netapp.com/us-en/trident/trident-use/anf.html["Astra Trident – Back-End-Konfiguration für Azure NetApp Files"^].
 
