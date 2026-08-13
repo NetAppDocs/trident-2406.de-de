@@ -20,6 +20,7 @@ Sie können Snapshots, Klone, schreibgeschütztes Klonen und Importieren von Vol
 
 
 
+[[configure-in-flight-kerberos-encryption-with-on-premises-ontap-volumes]]
 == Konfiguration der Verschlüsselung von Kerberos während der Übertragung mit lokalen ONTAP Volumes
 
 Sie können die Kerberos-Verschlüsselung für den Storage-Datenverkehr zwischen dem verwalteten Cluster und einem lokalen ONTAP Storage-Back-End aktivieren.
@@ -38,6 +39,7 @@ NOTE: Kerberos-Verschlüsselung für NFS-Datenverkehr mit On-Premises ONTAP Stor
 
 
 
+[[add-or-modify-ontap-export-policies]]
 === ONTAP-Exportrichtlinien hinzufügen oder ändern
 
 Sie müssen bestehenden ONTAP-Exportrichtlinien Regeln hinzufügen oder neue Exportrichtlinien erstellen, die Kerberos-Verschlüsselung für das ONTAP Storage-VM-Root-Volume sowie alle mit dem Upstream-Kubernetes-Cluster gemeinsam genutzten ONTAP-Volumes unterstützen. Die von Ihnen hinzugefügten Regeln für die Exportrichtlinie oder neu erstellte Richtlinien für den Export müssen die folgenden Zugriffsprotokolle und Zugriffsberechtigungen unterstützen:
@@ -76,6 +78,7 @@ Informationen zum Erstellen von ONTAP Exportrichtlinien und Exportrichtlinienreg
 
 
 
+[[create-a-storage-backend]]
 === Erstellen eines Storage-Backends
 
 Sie können eine Astra Control Provisioner-Storage-Back-End-Konfiguration erstellen, die Kerberos Verschlüsselungsfunktionen umfasst.
@@ -143,6 +146,7 @@ Nachdem Sie das Problem mit der Konfigurationsdatei identifiziert und korrigiert
 
 
 
+[[create-a-storage-class]]
 === Erstellen Sie eine Speicherklasse
 
 Sie können eine Storage-Klasse für die Bereitstellung von Volumes mit Kerberos-Verschlüsselung erstellen.
@@ -199,18 +203,20 @@ ontap-nas-sc    csi.trident.netapp.io   15h
 
 
 
+[[provision-volumes]]
 === Bereitstellen von Volumes
 
 Nachdem Sie ein Storage-Back-End und eine Storage-Klasse erstellt haben, können Sie nun ein Volume bereitstellen. Beachten Sie diese Anweisungen für https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Bereitstellen eines Volumes"^].
 
 
 
+[[configure-in-flight-kerberos-encryption-with-azure-netapp-files-volumes]]
 == Konfiguration der Verschlüsselung von Kerberos während der Übertragung mit Azure NetApp Files Volumes
 
 Sie können die Kerberos-Verschlüsselung für den Storage-Datenverkehr zwischen dem gemanagten Cluster und einem einzelnen Azure NetApp Files Storage-Back-End oder einem virtuellen Pool von Azure NetApp Files Storage-Back-Ends aktivieren.
 
 .Bevor Sie beginnen
-* Stellen Sie sicher, dass Sie Astra Control Provisioner auf dem verwalteten Red hat OpenShift-Cluster aktiviert haben. Anweisungen hierzu finden Sie unter link:../use/enable-acp.html["Astra Control Provisioner Aktivieren"^] .
+* Stellen Sie sicher, dass Astra Control Provisioner auf dem verwalteten Red Hat OpenShift Cluster aktiviert ist. Anweisungen finden sich unter link:../trident-use/enable-acp.html["Astra Control Provisioner Aktivieren"^].
 * Stellen Sie sicher, dass Sie Zugriff auf das Dienstprogramm haben `tridentctl` .
 * Stellen Sie sicher, dass Sie das Azure NetApp Files-Speicher-Back-End für die Kerberos-Verschlüsselung vorbereitet haben, indem Sie die Anforderungen beachten und die Anweisungen in befolgen https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-kerberos-encryption["Azure NetApp Files-Dokumentation"^].
 * Stellen Sie sicher, dass alle NFSv4-Volumes, die Sie mit Kerberos-Verschlüsselung verwenden, korrekt konfiguriert sind. Weitere Informationen finden Sie im Abschnitt NetApp NFSv4-Domänenkonfiguration (Seite 13) der https://www.netapp.com/media/16398-tr-3580.pdf["NetApp Leitfaden zu NFSv4-Verbesserungen und Best Practices"^].
@@ -218,6 +224,7 @@ Sie können die Kerberos-Verschlüsselung für den Storage-Datenverkehr zwischen
 
 
 
+[[create-a-storage-backend]]
 === Erstellen eines Storage-Backends
 
 Sie können eine Azure NetApp Files-Storage-Back-End-Konfiguration mit Kerberos Verschlüsselungsfunktionen erstellen.
@@ -340,6 +347,7 @@ Nachdem Sie das Problem mit der Konfigurationsdatei identifiziert und korrigiert
 
 
 
+[[create-a-storage-class]]
 === Erstellen Sie eine Speicherklasse
 
 Sie können eine Storage-Klasse für die Bereitstellung von Volumes mit Kerberos-Verschlüsselung erstellen.
@@ -384,6 +392,7 @@ sc-nfs    csi.trident.netapp.io   15h
 
 
 
+[[provision-volumes]]
 === Bereitstellen von Volumes
 
 Nachdem Sie ein Storage-Back-End und eine Storage-Klasse erstellt haben, können Sie nun ein Volume bereitstellen. Beachten Sie diese Anweisungen für https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Bereitstellen eines Volumes"^].

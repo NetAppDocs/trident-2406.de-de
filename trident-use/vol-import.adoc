@@ -16,6 +16,7 @@ Sie können vorhandene Speichervolumes als Kubernetes PV mit  `tridentctl import
 
 
 
+[[overview-and-considerations]]
 == Überblick und Überlegungen
 
 Ein Volume kann in Astra Trident importiert werden, um:
@@ -52,6 +53,7 @@ TIP: Diese Option ist nützlich, wenn Sie Kubernetes für Workloads in Container
 
 
 
+[[import-a-volume]]
 == Importieren Sie ein Volume
 
 Sie können ein Volume entweder mit  `tridentctl import` oder durch das Erstellen einer PVC mit Trident-Importanmerkungen importieren.
@@ -147,12 +149,14 @@ Trident wird das Volumen automatisch importieren und es an das PVC binden.
 ====
 
 
+[[examples]]
 == Beispiele
 
 Lesen Sie die folgenden Beispiele für den Import von Volumes für unterstützte Treiber.
 
 
 
+[[ontap-nas-and-ontap-nas-flexgroup]]
 === ONTAP NAS und ONTAP NAS FlexGroup
 
 Astra Trident unterstützt den Volume-Import mithilfe der `ontap-nas` Treiber und `ontap-nas-flexgroup`.
@@ -260,6 +264,7 @@ spec:
 ====
 
 
+[[ontap-san]]
 === ONTAP SAN
 
 Astra Trident unterstützt den Volume-Import mithilfe des `ontap-san` Treibers. Der Import von Volumes wird mit dem Treiber nicht unterstützt `ontap-san-economy`.
@@ -312,6 +317,7 @@ image:./san-import-igroup.png["Image der LUNS, die iqn und Cluster-iqn zugeordne
 ====
 
 
+[[element]]
 === Element
 
 Astra Trident unterstützt die NetApp Element-Software sowie den NetApp HCI-Volume-Import über den `solidfire-san` Treiber.
@@ -333,6 +339,7 @@ tridentctl import volume element_default element-managed -f pvc-basic-import.yam
 ----
 
 
+[[google-cloud-platform]]
 === Google Cloud Platform
 
 Astra Trident unterstützt den Volume-Import mithilfe des `gcp-cvs` Treibers.
@@ -355,6 +362,7 @@ tridentctl import volume gcpcvs_YEppr adroit-jolly-swift -f <path-to-pvc-file> -
 ----
 
 
+[[azure-netapp-files]]
 === Azure NetApp Dateien
 
 Astra Trident unterstützt den Volume-Import mithilfe des `azure-netapp-files` Treibers.

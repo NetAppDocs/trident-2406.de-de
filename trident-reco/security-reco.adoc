@@ -16,6 +16,7 @@ Stellen Sie mit den hier aufgeführten Empfehlungen sicher, dass Ihre Astra Trid
 
 
 
+[[run-astra-trident-in-its-own-namespace]]
 == Führen Sie Astra Trident in einem eigenen Namespace aus
 
 Es ist wichtig, dass Applikationen, Applikationsadministratoren, Benutzer und Managementapplikationen auf die Objektdefinitionen von Astra Trident oder die Pods zugreifen können, um zuverlässigen Storage sicherzustellen und potenzielle schädliche Aktivitäten zu blockieren.
@@ -24,6 +25,7 @@ Um die anderen Anwendungen und Benutzer von Astra Trident (`trident`zu trennen, 
 
 
 
+[[use-chap-authentication-with-ontap-san-backends]]
 == Verwenden Sie CHAP-Authentifizierung mit ONTAP SAN Back-Ends
 
 Astra Trident unterstützt die CHAP-basierte Authentifizierung für ONTAP-SAN-Workloads (über die `ontap-san` und `ontap-san-economy`-Treiber). NetApp empfiehlt die Verwendung von bidirektionalem CHAP mit Astra Trident zur Authentifizierung zwischen einem Host und dem Storage-Backend.
@@ -32,6 +34,7 @@ Für ONTAP-Back-Ends, die die SAN-Speichertreiber verwenden, kann Astra Trident 
 
 
 
+[[use-chap-authentication-with-netapp-hci-and-solidfire-backends]]
 == Verwenden Sie CHAP-Authentifizierung mit NetApp HCI und SolidFire Back-Ends
 
 NetApp empfiehlt die Implementierung von bidirektionalem CHAP, um die Authentifizierung zwischen einem Host und den NetApp HCI und SolidFire Back-Ends zu gewährleisten. Astra Trident verwendet ein geheimes Objekt mit zwei CHAP-Passwörtern pro Mandant. Bei der Installation von Astra Trident werden die CHAP-Schlüssel verwaltet und in einem CR-Objekt für das jeweilige PV gespeichert `tridentvolume`. Bei der Erstellung eines PV verwendet Astra Trident die CHAP-Schlüssel, um eine iSCSI-Sitzung zu initiieren und mit dem NetApp HCI- und dem SolidFire-System über CHAP zu kommunizieren.
@@ -41,6 +44,7 @@ NOTE: Die von Astra Trident erstellten Volumes sind keiner Volume Access Group z
 
 
 
+[[use-astra-trident-with-nve-and-nae]]
 == Nutzen Sie Astra Trident mit NVE und NAE
 
 NetApp ONTAP bietet Verschlüsselung ruhender Daten zum Schutz sensibler Daten, wenn eine Festplatte gestohlen, zurückgegeben oder einer neuen Verwendung zugewiesen wird. Weitere Informationen finden Sie unter link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["NetApp Volume Encryption Übersicht konfigurieren"^].

@@ -16,6 +16,7 @@ Mit dem Operator Trident können Sie die Astra Trident-Installation mithilfe der
 
 
 
+[[understanding-controller-pods-and-node-pods]]
 == Allgemeines zu Controller-Pods und Node-Pods
 
 Astra Trident wird als einzelner Controller-Pod ausgeführt sowie als Node-Pod auf jedem Worker-Node im Cluster. Der Node Pod muss auf jedem Host ausgeführt werden, auf dem Sie ein Astra Trident Volume mounten möchten.
@@ -28,6 +29,7 @@ Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-p
 
 
 
+[[configuration-options]]
 == Konfigurationsoptionen
 
 
@@ -117,6 +119,7 @@ NOTE: Weitere Informationen zum Formatieren von Pod-Parametern finden Sie unter 
 
 
 
+[[details-about-force-detach]]
 === Details zum Ablösen von Krafteinwirkung
 
 Trennung erzwingen ist nur für und `ontap-san-economy` verfügbar `ontap-san`. Vor der Aktivierung von Force Trennen muss das nicht-anmutige Herunterfahren des Node (NGNS) auf dem Kubernetes-Cluster aktiviert sein. Weitere Informationen finden Sie unter link:https://kubernetes.io/docs/concepts/architecture/nodes/#non-graceful-node-shutdown["Kubernetes: Nicht ordnungsgemäßes Herunterfahren von Nodes"^].
@@ -142,6 +145,7 @@ Wenn der Zustand der Nodes wiederhergestellt und die Wartung entfernt wird, übe
 
 
 
+[[sample-configurations]]
 == Beispielkonfigurationen
 
 Sie können die Attribute in verwenden<<Konfigurationsoptionen>>, wenn Sie definieren `TridentOrchestrator`, um Ihre Installation anzupassen.

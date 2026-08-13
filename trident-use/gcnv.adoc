@@ -20,6 +20,7 @@ Sie können jetzt Google Cloud NetApp Volumes als Backend für Astra Trident kon
 ----
 
 
+[[google-cloud-netapp-volumes-driver-details]]
 == Treiberdetails zu Google Cloud NetApp Volumes
 
 Astra Trident stellt den `google-cloud-netapp-volumes` Treiber für die Kommunikation mit dem Cluster bereit. Unterstützte Zugriffsmodi sind: _ReadWriteOnce_ (RWO), _ReadOnly Many_ (ROX), _ReadWriteMany_ (RWX), _ReadWriteOncePod_ (RWOP).

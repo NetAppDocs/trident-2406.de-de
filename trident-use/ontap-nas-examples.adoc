@@ -16,6 +16,7 @@ Lernen Sie, wie Sie ONTAP NAS-Treiber mit Ihrer Astra Trident Installation erste
 
 
 
+[[backend-configuration-options]]
 == Back-End-Konfigurationsoptionen
 
 Die Back-End-Konfigurationsoptionen finden Sie in der folgenden Tabelle:
@@ -101,6 +102,7 @@ Die Back-End-Konfigurationsoptionen finden Sie in der folgenden Tabelle:
 |===
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Back-End-Konfigurationsoptionen für die Bereitstellung von Volumes
 
 Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konfiguration steuern `defaults`. Ein Beispiel finden Sie unten in den Konfigurationsbeispielen.
@@ -156,6 +158,7 @@ NOTE: Die Verwendung von QoS Policy Groups mit Astra Trident erfordert ONTAP 9.8
 
 
 
+[[volume-provisioning-examples]]
 === Beispiele für die Volume-Bereitstellung
 
 Hier ein Beispiel mit definierten Standardwerten:
@@ -204,6 +207,7 @@ Vorhandene Back-Ends aus vorherigen Installationen stellen Volumes wie oben besc
 
 
 
+[[minimal-configuration-examples]]
 == Minimale Konfigurationsbeispiele
 
 Die folgenden Beispiele zeigen grundlegende Konfigurationen, bei denen die meisten Parameter standardmäßig belassen werden. Dies ist der einfachste Weg, ein Backend zu definieren.
@@ -385,6 +389,7 @@ defaults: {
 ====
 
 
+[[examples-of-backends-with-virtual-pools]]
 == Beispiele für Back-Ends mit virtuellen Pools
 
 In den unten gezeigten Beispieldateien für die Backend-Definition werden spezifische Standardwerte für alle Speicherpools festgelegt, z. B. `spaceReserve` bei „none“, `spaceAllocation` „false“ und „false `encryption`“. Die virtuellen Pools werden im Abschnitt Speicher definiert.
@@ -567,6 +572,7 @@ storage:
 ====
 
 
+[[map-backends-to-storageclasses]]
 == Back-Ends StorageClasses zuordnen
 
 Die folgenden StorageClass-Definitionen finden Sie unter <<Beispiele für Back-Ends mit virtuellen Pools>>. Mit dem `parameters.selector` Feld ruft jede StorageClass ab, welche virtuellen Pools zum Hosten eines Volumes verwendet werden können. Auf dem Volume werden die Aspekte im ausgewählten virtuellen Pool definiert.
@@ -642,6 +648,7 @@ Astra Trident entscheidet, welcher virtuelle Pool ausgewählt wird und stellt si
 
 
 
+[[update-datalif-after-initial-configuration]]
 == Nach der Erstkonfiguration aktualisieren `dataLIF`
 
 Sie können die Daten-LIF nach der Erstkonfiguration ändern, indem Sie den folgenden Befehl ausführen, um die neue Backend-JSON-Datei mit aktualisierten Daten-LIF bereitzustellen.

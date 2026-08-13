@@ -16,6 +16,7 @@ Erfahren Sie mehr über die Konfiguration eines ONTAP-Backend mit ONTAP- und Clo
 
 
 
+[[ontap-nas-driver-details]]
 == Details zum ONTAP-NAS-Treiber
 
 Astra Trident bietet die folgenden NAS-Storage-Treiber für die Kommunikation mit dem ONTAP Cluster. Unterstützte Zugriffsmodi sind: _ReadWriteOnce_ (RWO), _ReadOnly Many_ (ROX), _ReadWriteMany_ (RWX), _ReadWriteOncePod_ (RWOP).
@@ -62,6 +63,7 @@ RWO, ROX, RWX, RWOP
 |===
 
 
+[[astra-control-driver-compatibility]]
 === Treiberkompatibilität bei Astra Control
 
 Astra Control bietet nahtlosen Schutz, Disaster Recovery und Mobilität (Verschieben von Volumes zwischen Kubernetes-Clustern) für Volumes, die mit den Treibern , `ontap-nas-flexgroup` und `ontap-san` erstellt `ontap-nas` wurden. Weitere Informationen finden Sie unter link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Voraussetzungen für die Astra Control Replikation"^] .
@@ -76,6 +78,7 @@ Astra Control bietet nahtlosen Schutz, Disaster Recovery und Mobilität (Verschi
 ====
 
 
+[[user-permissions]]
 == Benutzerberechtigungen
 
 Astra geht davon aus, dass Astra Trident entweder als ONTAP- oder SVM-Administrator ausgeführt wird, wobei dieser normalerweise den Cluster-Benutzer, einen SVM-Benutzer oder einen `vsadmin` Benutzer mit einem anderen Namen und derselben Rolle verwendet `admin`.

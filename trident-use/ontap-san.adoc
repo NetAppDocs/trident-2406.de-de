@@ -16,6 +16,7 @@ Erfahren Sie mehr über die Konfiguration eines ONTAP-Backend mit ONTAP- und Clo
 
 
 
+[[ontap-san-driver-details]]
 == Details zum ONTAP-SAN-Treiber
 
 Astra Trident bietet die folgenden SAN-Storage-Treiber für die Kommunikation mit dem ONTAP Cluster. Unterstützte Zugriffsmodi sind: _ReadWriteOnce_ (RWO), _ReadOnly Many_ (ROX), _ReadWriteMany_ (RWX), _ReadWriteOncePod_ (RWOP).
@@ -105,6 +106,7 @@ ROX und RWX sind im Filesystem-Volume-Modus nicht verfügbar.
 |===
 
 
+[[astra-control-driver-compatibility]]
 === Treiberkompatibilität bei Astra Control
 
 Astra Control bietet nahtlosen Schutz, Disaster Recovery und Mobilität (Verschieben von Volumes zwischen Kubernetes-Clustern) für Volumes, die mit den Treibern , `ontap-nas-flexgroup` und `ontap-san` erstellt `ontap-nas` wurden. Weitere Informationen finden Sie unter link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Voraussetzungen für die Astra Control Replikation"^] .
@@ -119,6 +121,7 @@ Astra Control bietet nahtlosen Schutz, Disaster Recovery und Mobilität (Verschi
 ====
 
 
+[[user-permissions]]
 == Benutzerberechtigungen
 
 Astra geht davon aus, dass Astra Trident entweder als ONTAP- oder SVM-Administrator ausgeführt wird, wobei dieser normalerweise den Cluster-Benutzer, einen SVM-Benutzer oder einen `vsadmin` Benutzer mit einem anderen Namen und derselben Rolle verwendet `admin`. Bei Implementierungen von Amazon FSX for NetApp ONTAP rechnet Astra Trident damit, als ONTAP- oder SVM-Administrator ausgeführt zu werden. Dabei verwendet er den Cluster- `fsxadmin`Benutzer oder einen `vsadmin` SVM-Benutzer oder einen Benutzer mit einem anderen Namen mit derselben Rolle. Der `fsxadmin` Benutzer ist ein eingeschränkter Ersatz für den Cluster-Admin-Benutzer.
@@ -130,6 +133,7 @@ Es ist zwar möglich, eine restriktivere Rolle in ONTAP zu erstellen, die ein Tr
 
 
 
+[[additional-considerations-for-nvmetcp]]
 == Weitere Überlegungen zu NVMe/TCP
 
 Astra Trident unterstützt das Non-Volatile Memory Express (NVMe)-Protokoll über den `ontap-san` folgenden Treiber:

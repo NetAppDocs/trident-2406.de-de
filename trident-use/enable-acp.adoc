@@ -19,7 +19,7 @@ Im Abonnement für Astra Control Service ist automatisch die Lizenz für die Nut
 Bei den neuesten Updates für Astra Control wird Astra Control Provisioner Astra Trident als Storage-bereitstellung und -Orchestrierung ersetzen und für die Verwendung von Astra Control obligatorisch sein. Aus diesem Grund wird dringend empfohlen, Astra Control für die Astra Control-Bereitstellung zu aktivieren. Astra Trident wird weiterhin Open Source bleiben und mit neuen CSI- und anderen Funktionen von NetApp veröffentlicht, gepflegt, unterstützt und auf dem neuesten Stand sein.
 
 .Wie kann ich feststellen, ob ich die Astra Control-Bereitstellung aktivieren muss?
-Wenn Sie Astra Control Service einen Cluster hinzufügen, für den Astra Trident zuvor nicht installiert ist, wird der Cluster als markiert `Eligible`. Nach Ihnen link:../get-started/add-first-cluster.html["Fügen Sie den Cluster zu Astra Control hinzu"]wird der Astra Control Provisioner automatisch aktiviert.
+Wenn Sie einen Cluster zum Astra Control Service hinzufügen, auf dem Astra Trident zuvor nicht installiert war, wird der Cluster als  `Eligible` markiert. Nachdem der Cluster zu Astra Control hinzugefügt wurde, wird der Astra Control Provisioner automatisch aktiviert.
 
 Wenn Ihr Cluster nicht markiert ist `Eligible`, wird er aufgrund einer der folgenden Zeichen markiert `Partially eligible` :
 
@@ -63,7 +63,7 @@ crane auth login cr.astra.netapp.io -u <account-id> -p <api-token>
 ----
 
 
-. (Nur benutzerdefinierte Registrierungen) Befolgen Sie diese Schritte, um das Bild in Ihre benutzerdefinierte Registrierung zu verschieben. Wenn Sie keine Registrierung verwenden, befolgen Sie die Schritte des Trident-Operators im <<no-registry,Nächster Abschnitt>>.
+. (Nur für benutzerdefinierte Registries) Die folgenden Schritte verschieben das Image in Ihre benutzerdefinierte Registry. Wenn keine Registry verwendet wird, sind die Schritte für den Trident Operator in der <<first-step,Nächster Abschnitt>> zu beachten.
 +
 
 NOTE: Sie können Podman anstelle von Docker für die folgenden Befehle verwenden. Wenn Sie eine Windows-Umgebung verwenden, wird PowerShell empfohlen.
@@ -119,13 +119,13 @@ crane copy cr.astra.netapp.io/astra/trident-acp:24.02.0 <my_custom_registry>/tri
 --
 ====
 . Stellen Sie fest, ob die ursprüngliche Astra Trident Installationsmethode einen verwendethat.
-. Aktivieren Sie Astra Control Provisioner in Astra Trident mit der ursprünglich verwendeten Installationsmethode:
+. [[first-step]]Astra Control Provisioner in Astra Trident mit der ursprünglich verwendeten Installationsmethode aktivieren:
 +
 [role="tabbed-block"]
 ====
 .Astra Trident Betreiber
 --
-.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Laden Sie das Astra Trident Installationsprogramm herunter und extrahieren Sie es"^].
+.. https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Laden Sie das Astra Trident Installationsprogramm herunter und extrahieren Sie es"^].
 .. Führen Sie diese Schritte aus, wenn Sie Astra Trident noch nicht installiert haben oder den Operator aus der ursprünglichen Astra Trident-Implementierung entfernt haben:
 +
 ... Erstellen des CRD:
@@ -235,7 +235,7 @@ status:
 --
 .Tridentctl
 --
-.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["Laden Sie das Astra Trident Installationsprogramm herunter und extrahieren Sie es"^].
+.. https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["Laden Sie das Astra Trident Installationsprogramm herunter und extrahieren Sie es"^].
 .. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["Wenn Sie bereits Astra Trident verwenden, deinstallieren Sie ihn aus dem Cluster, das ihn hostet"^].
 .. Astra Trident mit aktivierter Astra Control Provisioner installieren (`--enable-acp=true`):
 +

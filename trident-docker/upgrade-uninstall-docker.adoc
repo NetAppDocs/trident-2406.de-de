@@ -16,6 +16,7 @@ Astra Trident ist ohne Auswirkungen auf die verwendeten Volumes sicher auf Docke
 
 
 
+[[upgrade]]
 == Upgrade
 
 Führen Sie die nachstehenden Schritte zum Upgrade von Astra Trident für Docker durch.
@@ -77,6 +78,7 @@ IMPORTANT: Wenn Sie ein Upgrade von einer alten Version von Astra Trident (vor 2
 
 
 
+[[uninstall]]
 == Deinstallieren
 
 Führen Sie die folgenden Schritte aus, um Astra Trident für Docker zu deinstallieren.

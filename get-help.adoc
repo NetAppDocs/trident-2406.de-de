@@ -16,6 +16,7 @@ NetApp bietet unterschiedliche Unterstützung für Astra Trident. Umfangreiche k
 
 
 
+[[astra-trident-support-lifecycle]]
 == Astra Trident Support-Lebenszyklus
 
 Astra Trident bietet auf Basis Ihrer Version drei Support-Level. Siehe link:https://mysupport.netapp.com/site/info/version-support["Unterstützung der NetApp Softwareversion für Definitionen"^].
@@ -59,24 +60,28 @@ NOTE: Den aktuellen Trident Supportplan für die Trident-Version finden Sie unte
 
 
 
+[[self-support]]
 == Self-Support
 
 Eine umfassende Liste von Artikeln zur Fehlerbehebung finden Sie unter https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Trident_Kubernetes["NetApp Knowledge Base (Anmeldung erforderlich)"^]. Hier finden Sie auch Informationen zur Fehlerbehebung in Bezug auf Astra https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra["Hier"^].
 
 
 
+[[community-support]]
 == Community-Support
 
 Es gibt eine lebendige, öffentliche Community von Container-Benutzern (einschließlich Astra Trident-Entwickler) auf unserem Astra link:https://discord.gg/NetApp["Kanal abstecken"^]. Hier können Sie allgemeine Fragen zum Projekt stellen und verwandte Themen mit Gleichgesinnten diskutieren.
 
 
 
+[[netapp-technical-support]]
 == Technischer Support von NetApp
 
 Um Hilfe mit Astra Trident zu erhalten, erstellen Sie ein Support Bundle mit `tridentctl logs -a -n trident` und senden Sie es an `NetApp Support <Getting Help>`.
 
 
 
+[[for-more-information]]
 == Finden Sie weitere Informationen
 
 * link:https://netapp.io/persistent-storage-provisioner-for-kubernetes/["Astra Trident Blogs"^]

@@ -16,6 +16,7 @@ Sehen Sie sich die Konfigurationsoptionen der Astra Trident Konfigurationen an.
 
 
 
+[[global-configuration-options]]
 == Globale Konfigurationsoptionen
 
 Diese Konfigurationsoptionen sind für alle Astra Trident Konfigurationen anwendbar, unabhängig von der genutzten Storage-Plattform.
@@ -71,6 +72,7 @@ Optionale Standardgröße für neue Volumes. Standard: `1G`
 |===
 
 
+[[ontap-configuration]]
 == ONTAP-Konfiguration
 
 Zusätzlich zu den oben genannten globalen Konfigurationswerten stehen bei Verwendung von ONTAP folgende Optionen auf oberster Ebene zur Verfügung.
@@ -265,6 +267,7 @@ Zu verwendende Tiering Policy, Standard ist `none`; `snapshot-only` für pre-ONT
 |===
 
 
+[[scaling-options]]
 === Skalierungsoptionen
 
 Die `ontap-nas` Treiber und `ontap-san` erstellen eine ONTAP FlexVol für jedes Docker Volume. ONTAP unterstützt bis zu 1000 FlexVols pro Cluster Node mit einem Cluster maximal 12,000 FlexVols. Wenn die Anforderungen für Docker Volumes dieser Einschränkung entsprechen, ist der `ontap-nas` Treiber aufgrund der zusätzlichen Funktionen von FlexVols wie granulare Docker Volume-Snapshots und Klonen die bevorzugte NAS-Lösung.
@@ -293,6 +296,7 @@ Um erweiterte Funktionen und umfassende Skalierbarkeit in derselben Umgebung zu 
 
 
 
+[[example-ontap-configuration-files]]
 === Beispiel für ONTAP-Konfigurationsdateien
 
 .NFS-Beispiel für <code> ONTAP-</code>-Treiber
@@ -411,6 +415,7 @@ Um erweiterte Funktionen und umfassende Skalierbarkeit in derselben Umgebung zu 
 ====
 
 
+[[element-software-configuration]]
 == Konfiguration von Element Software
 
 Zusätzlich zu den Werten einer globalen Konfiguration sind bei Verwendung von Element Software (NetApp HCI/SolidFire) diese Optionen verfügbar.
@@ -465,6 +470,7 @@ Der `solidfire-san` Treiber unterstützt Docker Swarm nicht.
 
 
 
+[[example-element-software-configuration-file]]
 === Beispiel für eine Konfigurationsdatei für die Element Software
 
 [listing]

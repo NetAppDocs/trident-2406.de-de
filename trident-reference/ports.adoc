@@ -16,6 +16,7 @@ Erfahren Sie mehr über die Kommunikationsports von Astra Trident.
 
 
 
+[[astra-trident-ports]]
 == Astra Trident-Ports
 
 Astra Trident kommuniziert über folgende Ports:

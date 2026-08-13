@@ -16,6 +16,7 @@ summary: Erfahren Sie mehr über tridentctl, ein Befehlszeilenprogramm mit einfa
 
 
 
+[[commands-and-global-flags]]
 == Befehle und globale Alarmmeldungen
 
 Sie können ausführen `tridentctl help`, um eine Liste der verfügbaren Befehle für `tridentctl` oder hängen Sie das Flag an `--help` einen beliebigen Befehl, um eine Liste der Optionen und Flags für diesen bestimmten Befehl zu erhalten.
@@ -70,10 +71,12 @@ WARNING: Die Trident REST-Schnittstelle kann nur für die Wiedergabe unter 127.0
 ====
 
 
+[[command-options-and-flags]]
 == Befehlsoptionen und -Flags
 
 
 
+[[create]]
 === Erstellen
 
 Mit dem `create` Befehl fügen Sie Astra Trident eine Ressource hinzu.
@@ -85,6 +88,7 @@ Optionen:: `backend`: Fügen Sie ein Backend zu Astra Trident.
 
 
 
+[[delete]]
 === Löschen
 
 Mit dem `delete` Befehl entfernen Sie eine oder mehrere Ressourcen aus Astra Trident.
@@ -99,6 +103,7 @@ Optionen:: `backend`: Löschen eines oder mehrerer Speicher-Backends aus Astra T
 
 
 
+[[get]]
 === Get
 
 Mit dem `get` Befehl rufen Sie eine oder mehrere Ressourcen aus Astra Trident ab.
@@ -116,6 +121,7 @@ Flags:: `-h`, `--help`: Hilfe für Bände.
 
 
 
+[[images]]
 === Bilder
 
 Verwenden Sie `images` Flags, um eine Tabelle der Container-Bilder zu drucken, die Astra Trident benötigt.
@@ -128,6 +134,7 @@ Flags:: `-h`, `--help`: Hilfe für Bilder.
 
 
 
+[[import-volume]]
 === Importvolumen
 
 Importieren Sie ein vorhandenes Volume mit dem `import volume` Befehl in Astra Trident.
@@ -142,6 +149,7 @@ Flags:: `-f`, `--filename string`: Pfad zur YAML- oder JSON-PVC-Datei.
 
 
 
+[[install]]
 === Installieren
 
 Verwenden Sie die `install` Flags, um Astra Trident zu installieren.
@@ -169,6 +177,7 @@ Flags:: `--autosupport-image string`: Das Containerbild für die AutoSupport Tel
 
 
 
+[[logs]]
 === Protokolle
 
 Verwenden Sie `logs` Flags, um die Protokolle aus Astra Trident zu drucken.
@@ -185,6 +194,7 @@ Flags:: `-a`, `--archive`: Erstellen Sie ein Support-Archiv mit allen Protokolle
 
 
 
+[[send]]
 === Senden
 
 Mit dem `send` Befehl senden Sie eine Ressource aus Astra Trident.
@@ -196,6 +206,7 @@ Optionen:: `autosupport`: Senden Sie ein AutoSupport-Archiv an NetApp.
 
 
 
+[[uninstall]]
 === Deinstallieren
 
 Verwenden Sie `uninstall` Flags, um Astra Trident zu deinstallieren.
@@ -208,6 +219,7 @@ Flags:: `-h, --help`: Hilfe zur Deinstallation.
 
 
 
+[[update]]
 === Aktualisierung
 
 Verwenden Sie den `update` Befehl, um eine Ressource in Astra Trident zu ändern.
@@ -219,6 +231,7 @@ Optionen:: `backend`: Aktualisieren Sie ein Backend in Astra Trident.
 
 
 
+[[update-backend-state]]
 === Back-End-Status aktualisieren
 
 Verwenden Sie den `update backend state` Befehl, um die Back-End-Vorgänge anzuhalten oder fortzusetzen.
@@ -295,6 +308,7 @@ userState: suspended
 ====
 
 
+[[version]]
 === Version
 
 Verwenden Sie `version` Flags, um die Version von und den laufenden Trident-Dienst zu drucken `tridentctl`.

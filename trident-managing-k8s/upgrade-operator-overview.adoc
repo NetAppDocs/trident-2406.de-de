@@ -16,9 +16,10 @@ Bevor Sie ein Upgrade von Astra Trident mit dem Trident-Operator durchführen, s
 
 
 
+[[trident-operator-upgrade-handling]]
 == Bearbeitung von Trident Upgrades für Betreiber
 
-Einer der vielen link:../trident-get-install/kubernetes-deploy.html["Vorteile der Verwendung des Trident-Bedieners"] Vorteile bei der Installation und Aktualisierung von Astra Trident ist die automatische Handhabung von Astra Trident und Kubernetes Objekten, ohne bestehende eingebundene Volumes zu beeinträchtigen. Auf diese Weise kann Astra Trident Upgrades ohne Ausfallzeiten oder link:https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/["_Rollierende Updates_"^] unterstützen. Insbesondere kommuniziert der Trident Operator mit dem Kubernetes-Cluster, um:
+Einer der vielen link:../trident-install/kubernetes-deploy.html["Vorteile der Verwendung des Trident-Bedieners"] Vorteile bei der Installation und Aktualisierung von Astra Trident ist die automatische Handhabung von Astra Trident und Kubernetes Objekten, ohne bestehende eingebundene Volumes zu beeinträchtigen. Auf diese Weise kann Astra Trident Upgrades ohne Ausfallzeiten oder link:https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/["_Rollierende Updates_"^] unterstützen. Insbesondere kommuniziert der Trident Operator mit dem Kubernetes-Cluster, um:
 
 * Löschen Sie die Trident Controller-Implementierung und den Node DemonSet und erstellen Sie sie neu.
 * Ersetzen Sie den Trident Controller Pod und die Trident Node Pods durch neue Versionen.
@@ -30,10 +31,11 @@ Einer der vielen link:../trident-get-install/kubernetes-deploy.html["Vorteile de
 
 
 
-TIP: Weitere Informationen zur Astra Trident Architektur auf dem Kubernetes Cluster sind unter link:../trident-get-started/intro.html#astra-trident-architecture["Die Architektur von Astra Trident"] zu finden.
+TIP: Weitere Informationen zur Astra Trident Architektur auf dem Kubernetes Cluster sind unter link:../trident-get-started/architecture.html["Trident-Architektur"] zu finden.
 
 
 
+[[operator-upgrade-workflow]]
 == Arbeitsablauf für die Benutzeraktualisierung
 
 Wenn Sie ein Upgrade mit dem Trident Operator initiieren:
